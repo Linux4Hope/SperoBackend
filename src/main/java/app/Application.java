@@ -12,7 +12,11 @@ public class Application {
         get("/dependencies", (request, response) -> "Finally got the Maven dependencies to work!");
     }
 
-    public void getHello(){
+    public void getHello() {
         get("/hello", (req, res) -> "You always doing the most jaylen");
+    }
+
+    public int num() {
+        return 2;
     }
 }

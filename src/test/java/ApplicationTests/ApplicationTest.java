@@ -1,7 +1,6 @@
-
-package src.main.java.app.Application;
 package ApplicationTests;
-import org.junit.Test;
+import app.Application;
+import org.junit.*;
 
 public class ApplicationTest {
     @Test
@@ -10,8 +9,9 @@ public class ApplicationTest {
         Application app = new Application();
 
         // Act
-        app.getHello();
+        int result = app.num();
 
         // Assert
+        Assert.assertEquals(2, result);
     }
 }
