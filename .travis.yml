@@ -1,18 +1,17 @@
- language: java
-
-jdk: #have Travis test against openjdk version
- - openjdk8
-
+sudo: false
+language: java
+jdk:
+  - oraclejdk8
+# TODO: Gross until Travis support setting maven version or upgrades to 3.3
 before_install:
- - wget https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
- - unzip -qq apache-maven-3.3.9-bin.zip
- - export M2_HOME=$PWD/apache-maven-3.3.9
- - export PATH=$M2_HOME/bin:$PATH
-
-install: 
-  mvn install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8 -DskipTests=true #force travis to use 1.8 version of maven
-
-script: 
-  mvn test -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8 #force testing with maven 1.8
-
-
+  - wget http://apache.claz.org/maven/maven-3/3.3.3/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+before_script:
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+script: mvn verify -Dgpg.skip=true
