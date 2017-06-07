@@ -15,3 +15,5 @@ before_script:
   - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
   - hash -r
 script: mvn verify -Dgpg.skip=true
+after_success:
+  - mvn clean test jacoco:report coveralls:report
