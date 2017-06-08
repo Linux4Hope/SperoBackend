@@ -1,9 +1,11 @@
 sudo: false
+dist: trusty
 language: java
 notifications:
   email: false
 jdk:
   - oraclejdk8
+  - openjdk8
 # TODO: Gross until Travis support setting maven version or upgrades to 3.3
 before_install:
   - wget http://apache.claz.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
