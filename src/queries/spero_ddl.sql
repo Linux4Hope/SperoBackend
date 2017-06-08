@@ -1,3 +1,6 @@
+DROP TABLE FinalProduct;
+
+
 CREATE TABLE IF NOT EXISTS Users (
     userID      VARCHAR(36) NOT NULL PRIMARY KEY,
     firstName   VARCHAR(25),
@@ -148,19 +151,55 @@ CREATE TABLE IF NOT EXISTS Monetary (
 );
 
 CREATE TABLE IF NOT EXISTS FinalProduct (
-    pSerialNumber       VARCHAR(50),
-    cSerialNumber       VARCHAR(50),
-    aDate               DATE,
-    officerID           VARCHAR(36) NOT NULL,
-    userID              VARCHAR(36) NOT NULL,
-    bLocation           VARCHAR(50) NOT NULL,
-    dateDonated         DATE NOT NULL,
-    operatingSystem     VARCHAR(50),
+    officerID       VARCHAR(36) NOT NULL,
+    userID          VARCHAR(36) NOT NULL,
+    bLocation       VARCHAR(50) NOT NULL,
+    aDate           DATE,
+    dateDonated     DATE NOT NULL,
+    operatingSystem VARCHAR(50),
     CONSTRAINT PK_FinalProduct PRIMARY KEY (officerID, userID, bLocation, dateDonated),
-    CONSTRAINT FK_PartFinal FOREIGN KEY (pSerialNumber)
-        REFERENCES Part(pSerialNumber),
-    CONSTRAINT FK_CompFinal FOREIGN KEY (cSerialNumber)
-        REFERENCES Computer(cSerialNumber),
-    CONSTRAINT FK_RequestFinal FOREIGN KEY (officerID, userID, bLocation, aDate)
+    CONSTRAINT FK_RequestFinalProduct FOREIGN KEY (officerID, userID, bLocation, aDate)
         REFERENCES Request(officerID, userID, bLocation, aDate)
+);
+
+CREATE TABLE IF NOT EXISTS FP_Parts (
+    officerID       VARCHAR(36) NOT NULL,
+    userID          VARCHAR(36) NOT NULL,
+    bLocation       VARCHAR(50),
+    dateDonated     DATE NOT NULL,
+    pSerialNumber   VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_fpParts PRIMARY KEY (officerID, userID, dateDonated, pSerialNumber),
+    CONSTRAINT FK_FinalProductParts FOREIGN KEY (officerID, userID, bLocation, dateDonated)
+        REFERENCES FinalProduct(officerID, userID, bLocation, dateDonated),
+    CONSTRAINT FK_PartFinalPart FOREIGN KEY (pSerialNumber)
+        REFERENCES Part(pSerialNumber)
+);
+
+CREATE TABLE IF NOT EXISTS FP_PartComp (
+    officerID       VARCHAR(36) NOT NULL,
+    userID          VARCHAR(36) NOT NULL,
+    bLocation       VARCHAR(50),
+    dateDonated     DATE NOT NULL,
+    cSerialNumber   VARCHAR(50) NOT NULL,
+    pSerialNumber   VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_fpPartComp PRIMARY KEY (officerID, userID, dateDonated, cSerialNumber, pSerialNumber),
+    CONSTRAINT FK_FinalProductPartComp FOREIGN KEY (officerID, userID, bLocation, dateDonated)
+        REFERENCES FinalProduct(officerID, userID, bLocation, dateDonated),
+    CONSTRAINT FK_PartFinalPartComp FOREIGN KEY (pSerialNumber)
+        REFERENCES Part(pSerialNumber),
+    CONSTRAINT FK_CompFinalPartComp FOREIGN KEY (cSerialNumber)
+        REFERENCES Computer(cSerialNumber)
+);
+
+CREATE TABLE IF NOT EXISTS FP_Comp (
+    officerID       VARCHAR(36) NOT NULL,
+    userID          VARCHAR(36) NOT NULL,
+    bLocation       VARCHAR(50),
+    dateDonated     DATE NOT NULL,
+    cSerialNumber   VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_fpPartComp PRIMARY KEY (officerID, userID, dateDonated, cSerialNumber),
+    CONSTRAINT FK_FinalProductComp FOREIGN KEY (officerID, userID, bLocation, dateDonated)
+        REFERENCES FinalProduct(officerID, userID, bLocation, dateDonated),
+    CONSTRAINT FK_CompFinalComp FOREIGN KEY (cSerialNumber)
+        REFERENCES Computer(cSerialNumber)
 );
