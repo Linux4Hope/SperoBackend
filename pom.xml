@@ -30,8 +30,7 @@
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <!-- Comment out and insert token for local coveralls run <repoToken></repoToken> -->
+                     <!--Comment out and insert token for local coveralls run <repoToken></repoToken>-->
                 </configuration>
             </plugin>
             <plugin>
