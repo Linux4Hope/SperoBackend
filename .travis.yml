@@ -1,5 +1,7 @@
 sudo: false
 language: java
+notifications:
+  email: false
 jdk:
   - oraclejdk8
 # TODO: Gross until Travis support setting maven version or upgrades to 3.3
