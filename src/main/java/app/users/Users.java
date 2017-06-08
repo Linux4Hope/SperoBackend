@@ -12,4 +12,6 @@ public class Users {
         username = name;
         password = pw;
     }
+
+    public String getUsername(){return username; }
 }

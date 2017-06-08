@@ -15,6 +15,10 @@ public class UsersData {
     }
 
     public String getAllUsers(){
-        return users.toString();
+        String list = "{";
+        for(int i=0; i<users.size(); i++)
+            list += "username: " + users.get(i).getUsername() + ", ";
+        list += "}";
+        return list;
     }
 }
