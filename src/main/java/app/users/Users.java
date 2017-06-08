@@ -5,4 +5,11 @@ package app.users;
  */
 public class Users {
 
+    private String username;
+    private String password;
+
+    public Users(String name, String pw){
+        username = name;
+        password = pw;
+    }
 }
