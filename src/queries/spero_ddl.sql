@@ -1,20 +1,19 @@
-DROP TABLE FP_Comp;
-DROP TABLE FP_PartComp;
-DROP TABLE FP_Parts;
-DROP TABLE FinalProduct;
-DROP TABLE Monetary;
-DROP TABLE Computer;
-DROP TABLE Part;
-DROP TABLE Request;
-DROP TABLE Donation;
-DROP TABLE Application;
-DROP TABLE Expenses;
-DROP TABLE Income;
-DROP TABLE Branch;
-DROP TABLE Officer;
-DROP TABLE Guest;
-DROP TABLE Users;
-
+--DROP TABLE FP_Comp;
+--DROP TABLE FP_PartComp;
+--DROP TABLE FP_Parts;
+--DROP TABLE FinalProduct;
+--DROP TABLE Monetary;
+--DROP TABLE Computer;
+--DROP TABLE Part;
+--DROP TABLE Request;
+--DROP TABLE Donation;
+--DROP TABLE Application;
+--DROP TABLE Expenses;
+--DROP TABLE Income;
+--DROP TABLE Branch;
+--DROP TABLE Officer;
+--DROP TABLE Guest;
+--DROP TABLE Users;
 
 CREATE TABLE IF NOT EXISTS Users (
     userID      VARCHAR(36) NOT NULL PRIMARY KEY,

@@ -68,47 +68,47 @@ VALUES
     (101, 106, 'Oahu', '2015-01-25', '2342 Hello St', 'World', 'JP', '34532', 'Approved'),
     (102, 107, 'Los Angeles', '2014-01-01', '23452 Mouse Blvd', 'Computer', 'FB', '93422', 'Approved');
 
-INSERT INTO Donation(officerID, userID, bLocation, aDate, dQuestion) VALUES
+INSERT INTO Donation(dOfficerID, donatedBy, bLocation, aDate, dQuestion) VALUES
     (100, 105, 'Los Angeles', '2017-05-10', 'application answers entered here'),
     (104, 105, 'Los Angeles', '2017-06-01', 'application answers entered here'),
     (102, 108, 'San Francisco', '2016-07-30', 'application answers entered here');
 
-INSERT INTO Request(officerID, userID, bLocation, aDate, rQuestion) VALUES
+INSERT INTO Request(rOfficerID, requestedBy, bLocation, aDate, rQuestion) VALUES
     (102, 107, 'Los Angeles', '2015-05-28', 'application answers entered here'),
     (102, 107, 'Los Angeles', '2014-01-01', 'application answers entered here'),
     (103, 109, 'San Francisco', '2016-09-01', 'application answers entered here'),
     (101, 106, 'Oahu', '2015-01-25', 'application answers entered here');
 
-INSERT INTO Part(officerID, userID, aDate, bLocation, pSerialNumber, pType, notes) VALUES
+INSERT INTO Part(dOfficerID, donatedBy, aDate, bLocation, pSerialNumber, pType, notes) VALUES
     (100, 105, '2017-05-10', 'Los Angeles', '893470482042', 'RAM', 'extra notes'),
     (100, 105, '2017-05-10', 'Los Angeles', '930853895083', 'Processor', 'extra notes'),
     (100, 105, '2017-05-10', 'Los Angeles', '763453985793', 'RAM', 'extra notes'),
     (100, 105, '2017-05-10', 'Los Angeles', '232425353225', 'Camera', 'extra notes'),
     (100, 105, '2017-05-10', 'Los Angeles', '923254086493', 'Shell', 'extra ntoes');
 
-INSERT INTO Computer(officerID, userID, bLocation, aDate, cSerialNumber, make, model, processor, storage, ram, conditionStatus, recycledStatus, notes)
+INSERT INTO Computer(dOfficerID, donatedBy, bLocation, aDate, cSerialNumber, make, model, processor, storage, ram, conditionStatus, recycledStatus, notes)
 VALUES
     (104, 105, 'Los Angeles', '2017-06-01', '9383888888834', 'test', 'test', 'test', 'test', 'test', 'test', 'test','test'),
     (104, 105, 'Los Angeles', '2017-06-01', '3897439793939', 'test', 'test', 'test', 'test', 'test', 'test', 'test','test');
 
-INSERT INTO Monetary(officerID, userID, bLocation, aDate, amount) VALUES
+INSERT INTO Monetary(dOfficerID, donatedBy, bLocation, aDate, amount) VALUES
     (102, 108, 'San Francisco', '2016-07-30' , 100);
 
-INSERT INTO FinalProduct(officerID, userID, bLocation, aDate, dateDonated, operatingSystem) VALUES
+INSERT INTO FinalProduct(rOfficerID, requestedBy, bLocation, aDate, dateDonated, operatingSystem) VALUES
     (101, 106, 'Oahu', '2015-01-25', '2015-03-13', 'Sierra'),
     (102, 107, 'Los Angeles', '2015-05-28', '2015-07-01', 'Ubuntu'),
     (102, 107, 'Los Angeles', '2014-01-01', '2014-03-17', 'Windows');
 
-INSERT INTO FP_Parts(officerID, userID, bLocation, dateDonated, pSerialNumber) VALUES
+INSERT INTO FP_Parts(rOfficerID, requestedBy, bLocation, dateDonated, pSerialNumber) VALUES
     (101, 106, 'Oahu', '2015-03-13', '893470482042'),
     (101, 106, 'Oahu', '2015-03-13', '930853895083'),
     (101, 106, 'Oahu', '2015-03-13', '232425353225');
 
-INSERT INTO FP_PartComp(officerID, userID, bLocation, dateDonated, cSerialNumber, pSerialNumber) VALUES
+INSERT INTO FP_PartComp(rOfficerID, requestedBy, bLocation, dateDonated, cSerialNumber, pSerialNumber) VALUES
     (102, 107, 'Los Angeles', '2015-07-01', '9383888888834', '763453985793'),
     (102, 107, 'Los Angeles', '2015-07-01', '9383888888834', '923254086493');
 
-INSERT INTO FP_Comp(officerID, userID, bLocation, dateDonated, cSerialNumber) VALUES
+INSERT INTO FP_Comp(rOfficerID, requestedBy, bLocation, dateDonated, cSerialNumber) VALUES
     (102, 107, 'Los Angeles', '2014-03-17', '3897439793939');
 
 
