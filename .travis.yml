@@ -1,0 +1,23 @@
+sudo: false
+dist: trusty
+language: java
+notifications:
+  email: false
+jdk:
+  - oraclejdk8
+  - openjdk8
+# TODO: Gross until Travis support setting maven version or upgrades to 3.3
+before_install:
+  - wget http://apache.claz.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+before_script:
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+script: mvn verify -Dgpg.skip=true
+after_success:
+  - mvn clean test jacoco:report coveralls:report
